@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Cấu hình driver MySQL để Hibernate có thể kết nối với cơ sở dữ liệu MySQL -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <!-- URL kết nối đến cơ sở dữ liệu MySQL, bao gồm tên cơ sở dữ liệu (t2303e) và cổng (3306) -->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/player_evaluation</property>
+
+        <!-- Tên người dùng và mật khẩu để kết nối với cơ sở dữ liệu MySQL -->
+        <property name="hibernate.connection.username">root</property>
+<!--        <property name="hibernate.connection.password"></property>-->
+
+        <!-- Kích thước pool kết nối, chỉ định số lượng kết nối tối đa được Hibernate quản lý -->
+        <property name="hibernate.connection.pool_size">1</property>
+
+        <!-- Cấu hình cho Hibernate biết cách quản lý phiên giao dịch trên mỗi luồng (thread) -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Hiển thị các câu lệnh SQL mà Hibernate tạo ra trên console -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Định nghĩa dialect cho MySQL, cho Hibernate biết cách tạo ra các câu SQL tối ưu cho MySQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Mapping các lớp entity với bảng cơ sở dữ liệu. Đảm bảo Hibernate biết cách ánh xạ các đối tượng Java sang các bảng -->
+        <mapping class="org.example.entity.Player"/>
+        <mapping class="org.example.entity.PlayerIndex"/>
+        <mapping class="org.example.entity.Indexer"/>
+
+    </session-factory>
+</hibernate-configuration>
